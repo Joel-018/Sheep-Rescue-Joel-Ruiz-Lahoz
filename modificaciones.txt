@@ -1,0 +1,20 @@
+Práctica: Sheep Rescue (Modificaciones)
+
+Para cumplir con los requisitos de la práctica y mejorar el "Game Feel", se han implementado las siguientes modificaciones:
+
+1. Sonidos de juego y físicas de audio (2D):
+   - Se ha añadido un componente AudioSource a la "HayMachine" para reproducir el sonido de disparo ("Shoot.wav").
+   - En el script "Sheep.cs", se ha implementado AudioSource.PlayClipAtPoint() para reproducir "SheepHit.wav" al impactar y "SheepDropped.wav" al caer por el barranco. Esto garantiza que el sonido se escuche desde la cámara aunque la oveja sea destruida.
+
+2. Música de fondo:
+   - Se ha añadido un componente AudioSource a la cámara principal (Main Camera) con la pista "Flying Kerfuffle.mp3" activada en bucle (Loop) para mejorar la inmersión.
+
+3. Dificultad dinámica (Velocidad aleatoria):
+   - Se ha modificado el método Start() de la oveja para incluir "runSpeed = Random.Range(5f, 15f)", haciendo que el ritmo y la velocidad de los enemigos sean completamente impredecibles.
+
+4. Variación visual (Tamaños aleatorios):
+   - Se ha alterado el transform.localScale de la oveja al nacer con valores aleatorios (Random.Range). Visualmente da la sensación de que hay ovejas adultas y crías pequeñas.
+
+5. Efectos Visuales (VFX) y Optimización de Memoria:
+   - Al chocar el heno con la oveja, se instancia el prefab "Smoke Particles" para crear una nube de humo. 
+   - Para evitar saturar la jerarquía de Unity y limpiar la memoria, se ha optimizado aplicando Destroy(smoke, 2f) sobre las partículas instanciadas, haciéndolas desaparecer automáticamente a los 2 segundos.
